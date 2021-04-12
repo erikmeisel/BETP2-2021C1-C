@@ -14,7 +14,24 @@
  * @return {boolean}
  */
 const isValid = function(s){
-    
+    let pares = {
+        '(': ')',
+        '[': ']',
+        '{': '}'
+    }
+    let pila = []
+    for (let i = 0; i<s.length;i++){
+        let v = s[i]
+        if (v=="(" || v == "{" || v == "[") {
+            pila.push(v)
+        }
+        if (v==")" || v == "}" || v == "]") {
+            let coso = pila.pop()
+            if (v != pares[coso]) return false
+        }
+    }
+    if (pila.length>0) return false
+    return true 
 };
 
 // TESTS
