@@ -14,6 +14,7 @@
  * @return {boolean}
  */
 const isValid = function(s){
+<<<<<<< HEAD
     let aux = -1;
     
     while(s.length != 0){
@@ -26,6 +27,26 @@ const isValid = function(s){
         if(aux === s.length) return false;
     }
     if(s.length === 0) return true;
+=======
+    let pares = {
+        '(': ')',
+        '[': ']',
+        '{': '}'
+    }
+    let pila = []
+    for (let i = 0; i<s.length;i++){
+        let v = s[i]
+        if (v=="(" || v == "{" || v == "[") {
+            pila.push(v)
+        }
+        if (v==")" || v == "}" || v == "]") {
+            let coso = pila.pop()
+            if (v != pares[coso]) return false
+        }
+    }
+    if (pila.length>0) return false
+    return true 
+>>>>>>> branch
 };
 
 // TESTS

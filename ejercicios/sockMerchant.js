@@ -11,6 +11,7 @@
  * @return {Number} 
  */
 const sockMerchant = function(colorSocks){
+<<<<<<< HEAD
     let count=0;
       
     // si ordenamos van los pares juntos
@@ -25,6 +26,16 @@ const sockMerchant = function(colorSocks){
       }
   
      return count;
+=======
+    colorSocks.sort()
+    let pares=0
+    for (let i = 1;i<colorSocks.length;i+=2) {
+        if (colorSocks[i]==colorSocks[i-1]) {
+            pares++
+        }
+    }
+    return pares
+>>>>>>> branch
 }
 
 // TESTS TDD

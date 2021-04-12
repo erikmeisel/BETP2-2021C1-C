@@ -24,6 +24,7 @@ const str = `<ul>
 // Obtener el total de segundos de los videos de tipo Redux
 // Tip: Obtener un array de objetos, donde cada objeto sea un video
 // {min:5, seg: 59, tipo: 'Redux Video'}
+<<<<<<< HEAD
 
 function getObjetos(str){
   return str
@@ -58,3 +59,24 @@ function getTotalSegundos(videos, tipo){
 
 console.log(getTotalSegundos(getObjetos(str), 'Redux Video') === 1847);
 console.log(getTotalSegundos(getObjetos(str), 'Flexbox Video') === 6132);
+=======
+function parser(contenido) {
+  let x = contenido.replace('<li data-time="','').replace('</ul>','').replace('<ul>\n','').split('</li>\n')
+  let videos = []
+  for (let linea of x) {
+    let [minutoseg,tipo] = linea.split("\">")
+    let [minuto,segundo] = minutoseg.split(":")    
+    let video = {min:parseInt(minuto.replace('<li data-time="','')),seg:parseInt(segundo),tipo: tipo}
+    videos.push(video)
+  }
+  return videos
+}
+
+let videos = parser(str)
+let sec = 0
+for (let v of videos) {
+  if (v.tipo=='Redux Video') sec+=(v.min*60) + v.seg
+}
+
+console.log("Total de segundos de videos Redux: "+sec)
+>>>>>>> branch
